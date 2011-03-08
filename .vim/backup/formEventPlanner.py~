@@ -1,0 +1,12 @@
+import colander
+
+class EventPlanner(colander.MappingSchema):
+    name = colander.SchemaNode(colander.String())
+    age = colander.SchemaNode(colander.Integer(),
+            validator=colander.Range(0, 200))
+
+class EventPlanners(colander.SequenceSchema):
+    eventPlanner = EventPlanner()
+
+class Schema(colander.MappingSchema):
+    eventPlanners = EventPlanners()
